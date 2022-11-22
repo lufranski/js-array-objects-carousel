@@ -55,13 +55,6 @@ contentArray.forEach((element, index) => {
             <div class="thumbnail focus"><img class="rounded" src=${element.image}></div>
         `;
 
-    // }else if(index == 4){
-        
-    //     sider.innerHTML += 
-    //     `
-    //         <div class="thumbnail"><img class="rounded-bot" src=${element.image}></div>
-    //     `;
-
     } else {
 
         mainCarousel.innerHTML += 
@@ -86,32 +79,34 @@ const arrayPics = document.getElementsByClassName('pic');
 let activePic = 0;
 
 botBtn.addEventListener('click' , 
+    
     function(){
 
         // Ciclo infinito del carousel
-        
+            
         if (activePic == contentArray.length - 1) {
-            
+                
             activePic = 0;
-            
-            
-            
+                
+                
+                
         } else {
-            
+                
             activePic++;
 
         }
 
-        
+            
         document.querySelector('.pic.active').classList.remove('active');
 
         document.getElementsByClassName('pic')[activePic].classList.add('active');
-        
-        
+            
+            
         document.querySelector('.thumbnail.focus').classList.remove('focus');
-        
+            
         document.getElementsByClassName('thumbnail')[activePic].classList.add('focus');
     }
+
 );
 
 const topBtn = document.getElementById('top');
@@ -144,4 +139,79 @@ topBtn.addEventListener('click' ,
     }
 );
 
+// const timer = setTimeout(
+
+//     function(){
+//         if (activePic == contentArray.length - 1) {
+            
+//             activePic = 0;
+            
+            
+            
+//         } else {
+            
+//             activePic++;
+
+//         }
+
+        
+//         document.querySelector('.pic.active').classList.remove('active');
+
+//         document.getElementsByClassName('pic')[activePic].classList.add('active');
+        
+        
+//         document.querySelector('.thumbnail.focus').classList.remove('focus');
+        
+//         document.getElementsByClassName('thumbnail')[activePic].classList.add('focus');
+
+        
+//         if (activePic == 0) {
+            
+//             activePic = arrayPics.length - 1;
+            
+            
+            
+//         } else {
+            
+//             activePic--;
+            
+//         }
+        
+//         document.querySelector('.pic.active').classList.remove('active');
+
+//         document.getElementsByClassName('pic')[activePic].classList.add('active');
+        
+//         document.querySelector('.thumbnail.focus').classList.remove('focus');
+        
+//         document.getElementsByClassName('thumbnail')[activePic].classList.add('focus');
+//     }
+
+// , 3000);
+
+// function progressiveClassAdder (element, array){
+    
+//     if (element == array.length - 1) {
+            
+//         element = 0;
+        
+        
+        
+//     } else {
+        
+//         element++;
+
+//     }
+
+    
+//     document.querySelector('.pic.active').classList.remove('active');
+
+//     document.getElementsByClassName('pic')[element].classList.add('active');
+    
+    
+//     document.querySelector('.thumbnail.focus').classList.remove('focus');
+    
+//     document.getElementsByClassName('thumbnail')[element].classList.add('focus');
+
+//     return element;
+// }
 

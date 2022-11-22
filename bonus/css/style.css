@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: #FFCACA;
+}
+
 #container {
     width: 60%;
     margin: 100px auto;
@@ -32,7 +36,8 @@
 
 .button {
     position: absolute;
-    background-color: grey;
+    background-color: #FFCACA;
+    color: #251B37;
     padding: 5px;
     border-radius: 50%;
     z-index: 200;
@@ -63,11 +68,11 @@
     position: absolute;
     bottom: 20px;
     left: 30px;
-    background-color: rgba(26, 25, 25, 0.7);
+    background-color: rgba(37, 27, 55, 0.7);
     border-radius: 20px;
     width: 70%;
     padding: 10px;
-    color: #fff;
+    color: #FFECEF;
 }
 
 
