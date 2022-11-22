@@ -5,7 +5,7 @@ const contentArray = [
     
     { 
         image: 'img/01.webp', 
-        title: 'Marvel\'s Spiderman Miles Morale', 
+        title: 'Marvel\'s Spiderman Miles Morales', 
         text: 'Experience the rise of Miles Morales as the new hero masters incredible, explosive new powers to become his own Spider-Man.' 
     }, 
     
@@ -40,14 +40,75 @@ const carousel = document.getElementById('container');
 
 contentArray.forEach((element, index) => {
 
-    carousel.innerHTML += 
-    `
-        <div class="active"><img src=${element.image}></div>
-    `;
+    // Condizione per cui solo la prima immagine del carousel è visibile all'inizio
+
+    if(index == 0){
+        
+        carousel.innerHTML += 
+        `
+            <div class="pic active"><img src=${element.image}><div class="label"><p>${element.title}</p><p>${element.text}</p></div>
+        `;
+        
+    } else {
+
+        carousel.innerHTML += 
+        `
+            <div class="pic"><img src=${element.image}><div class="label"><p>${element.title}</p><p>${element.text}</p></div>
+        `;
+
+    }
+
 
 }
 );
 
 // Al click dell'utente sulle frecce si potrà navigare sul carousel
+const botBtn = document.getElementById('bot');
+const arrayPics = document.getElementsByClassName('pic');
+
+let activePic = 0;
+
+botBtn.addEventListener('click' , 
+    function(){
+
+        // Condizioni
+        if (activePic < contentArray.length - 1) {
+
+            // Togliere la classe active all'elemento 0
+            arrayPics[activePic].classList.remove('active');
+            
+            // Incremento
+            activePic++;
+
+            // Aggiungo la classe active all'elemento successivo
+            arrayPics[activePic].classList.add('active');
+
+        }
+
+    }
+);
+
+const topBtn = document.getElementById('top');
+
+topBtn.addEventListener('click' , 
+    function(){
+
+        // Condizioni
+        if (activePic > 0) {
+
+            // Togliere la classe active all'elemento 0
+            arrayPics[activePic].classList.remove('active');
+            
+            // Incremento
+            activePic--;
+
+            // Aggiungo la classe active all'elemento successivo
+            arrayPics[activePic].classList.add('active');
+
+        }
+
+    }
+);
+
 
 // Ciclo infinito del carousel
