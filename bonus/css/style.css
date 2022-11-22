@@ -75,6 +75,11 @@ body {
     color: #FFECEF;
 }
 
+.label p:first-child {
+    color: #F06292;
+    font-weight: 800;
+}
+
 
 .thumbnail {
     filter: brightness(50%);
