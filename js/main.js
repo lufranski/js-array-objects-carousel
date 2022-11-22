@@ -71,19 +71,35 @@ let activePic = 0;
 botBtn.addEventListener('click' , 
     function(){
 
-        // Condizioni
-        if (activePic < contentArray.length - 1) {
+        // // Condizioni
+        // if (activePic < contentArray.length - 1) {
 
-            // Togliere la classe active all'elemento 0
-            arrayPics[activePic].classList.remove('active');
+        // // Togliere la classe active all'elemento 0
+        //  arrayPics[activePic].classList.remove('active');
             
-            // Incremento
+        // // Incremento
+        // activePic++;
+
+        // // Aggiungo la classe active all'elemento successivo
+        // arrayPics[activePic].classList.add('active');
+
+        // }
+
+        // Ciclo infinito del carousel
+        
+        if (activePic == contentArray.length - 1) {
+            
+            activePic = 0;
+
+        } else {
+            
             activePic++;
 
-            // Aggiungo la classe active all'elemento successivo
-            arrayPics[activePic].classList.add('active');
-
         }
+
+        document.querySelector('.pic.active').classList.remove('active');
+
+        document.getElementsByClassName('pic')[activePic].classList.add('active');
 
     }
 );
@@ -93,22 +109,36 @@ const topBtn = document.getElementById('top');
 topBtn.addEventListener('click' , 
     function(){
 
-        // Condizioni
-        if (activePic > 0) {
+        // // Condizioni
+        // if (activePic > 0) {
 
-            // Togliere la classe active all'elemento 0
-            arrayPics[activePic].classList.remove('active');
+        //     // Togliere la classe active all'elemento 0
+        //     arrayPics[activePic].classList.remove('active');
             
-            // Incremento
-            activePic--;
+        //     // Incremento
+        //     activePic--;
 
-            // Aggiungo la classe active all'elemento successivo
-            arrayPics[activePic].classList.add('active');
+        //     // Aggiungo la classe active all'elemento successivo
+        //     arrayPics[activePic].classList.add('active');
+
+        // }
+
+        // Ciclo infinito del carousel
+        
+        if (activePic == 0) {
+            
+            activePic = arrayPics.length - 1;
+
+        } else {
+            
+            activePic--;
 
         }
 
+        document.querySelector('.pic.active').classList.remove('active');
+
+        document.getElementsByClassName('pic')[activePic].classList.add('active');
     }
 );
 
 
-// Ciclo infinito del carousel
