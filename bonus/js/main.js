@@ -1,4 +1,4 @@
-// Array Objects Carousel
+// Array Objects Carousel - Bonus
 
 // Dopo aver rimosso dall'html il markup statico creare un array di oggetti che servirà ad inserire il contenuto in html in modo dinamico
 const contentArray = [
@@ -36,7 +36,8 @@ const contentArray = [
 ];
 
 // Inserire il contenuto in html
-const carousel = document.getElementById('container');
+const mainCarousel = document.getElementById('main-carousel');
+const sider = document.getElementById('side-carousel');
 
 contentArray.forEach((element, index) => {
 
@@ -44,20 +45,36 @@ contentArray.forEach((element, index) => {
 
     if(index == 0){
         
-        carousel.innerHTML += 
+        mainCarousel.innerHTML += 
         `
             <div class="pic active"><img src=${element.image}><div class="label"><p>${element.title}</p><p>${element.text}</p></div>
         `;
         
+        sider.innerHTML += 
+        `
+            <div class="thumbnail focus"><img class="rounded" src=${element.image}></div>
+        `;
+
+    // }else if(index == 4){
+        
+    //     sider.innerHTML += 
+    //     `
+    //         <div class="thumbnail"><img class="rounded-bot" src=${element.image}></div>
+    //     `;
+
     } else {
 
-        carousel.innerHTML += 
+        mainCarousel.innerHTML += 
         `
             <div class="pic"><img src=${element.image}><div class="label"><p>${element.title}</p><p>${element.text}</p></div>
         `;
 
-    }
+        sider.innerHTML += 
+        `
+            <div class="thumbnail"><img src=${element.image}></div>
+        `;
 
+    }
 
 }
 );
@@ -71,36 +88,29 @@ let activePic = 0;
 botBtn.addEventListener('click' , 
     function(){
 
-        // // Condizioni
-        // if (activePic < contentArray.length - 1) {
-
-        // // Togliere la classe active all'elemento 0
-        //  arrayPics[activePic].classList.remove('active');
-            
-        // // Incremento
-        // activePic++;
-
-        // // Aggiungo la classe active all'elemento successivo
-        // arrayPics[activePic].classList.add('active');
-
-        // }
-
         // Ciclo infinito del carousel
         
         if (activePic == contentArray.length - 1) {
             
             activePic = 0;
-
+            
+            
+            
         } else {
             
             activePic++;
 
         }
 
+        
         document.querySelector('.pic.active').classList.remove('active');
 
         document.getElementsByClassName('pic')[activePic].classList.add('active');
-
+        
+        
+        document.querySelector('.thumbnail.focus').classList.remove('focus');
+        
+        document.getElementsByClassName('thumbnail')[activePic].classList.add('focus');
     }
 );
 
@@ -109,35 +119,28 @@ const topBtn = document.getElementById('top');
 topBtn.addEventListener('click' , 
     function(){
 
-        // // Condizioni
-        // if (activePic > 0) {
-
-        //     // Togliere la classe active all'elemento 0
-        //     arrayPics[activePic].classList.remove('active');
-            
-        //     // Incremento
-        //     activePic--;
-
-        //     // Aggiungo la classe active all'elemento successivo
-        //     arrayPics[activePic].classList.add('active');
-
-        // }
-
         // Ciclo infinito del carousel
         
         if (activePic == 0) {
             
             activePic = arrayPics.length - 1;
-
+            
+            
+            
         } else {
             
             activePic--;
-
+            
         }
-
+        
         document.querySelector('.pic.active').classList.remove('active');
 
         document.getElementsByClassName('pic')[activePic].classList.add('active');
+        
+        document.querySelector('.thumbnail.focus').classList.remove('focus');
+        
+        document.getElementsByClassName('thumbnail')[activePic].classList.add('focus');
+        
     }
 );
 
